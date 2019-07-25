@@ -24,7 +24,7 @@ def authorize():
     client.load_from_env()
     spt.client_creds = client
     if spt.is_oauth_ready:
-        return redirect('https://accounts.spotify.com/authorize?redirect_uri=http://127.0.0.1:5000/callback/q&client_id=8e564904a1844f099ccfad1e3accc38d&response_type=code&scope=user-read-recently-played&show_dialog=false&state=123')
+        return redirect('https://accounts.spotify.com/authorize?redirect_uri=http://127.0.0.1:5000/callback/q&client_id=&response_type=code&scope=user-read-recently-played&show_dialog=false&state=123')
     else:
         return (
             jsonify(
@@ -95,6 +95,6 @@ def export_keys():
 
 
 if __name__ == "__main__":
-    app.secret_key = '4899'
+    app.secret_key = ''
     app.debug = True
     app.run()
