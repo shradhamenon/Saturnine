@@ -3,9 +3,9 @@ import mysql.connector
 mydb = mysql.connector.connect(
   host="localhost",
   user="root",
-  passwd="H0rr0rland$",
+  passwd="",
   auth_plugin="mysql_native_password",
-  database="saturnine"
+  database=""
 )
 
 cursor = mydb.cursor()
