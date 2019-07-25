@@ -1,0 +1,65 @@
+h1 {
+    font-family: 'Abril Fatface', serif;
+    color: white;
+    font-size: 500%
+}
+
+p {
+    font-family: 'Raleway', cursive;
+    font-size: 200%;
+    color: white;
+    text-align: center;
+    font-weight: 200;
+}
+
+body {
+    background: url('./image2.jpg');
+    background-repeat:no-repeat;
+    background-size:cover;
+    background-position:center center;
+    height: 100vh;
+    width: 100%
+}
+
+.centered {
+position: absolute;
+  margin: auto;
+  text-align: center;
+}
+
+.btn {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 400;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 40px;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: transparent;
+    color: white;
+}
+
+.btn:hover{
+    font-family: 'Raleway', sans-serif;
+    font-weight: 400;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 40px;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: white;
+    color: #1a191e;
+}
+
+.cred {
+    color: white;
+    font-size: 70%;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    margin: 5px;
+}

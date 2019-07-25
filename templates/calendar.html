@@ -1,0 +1,113 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Saturnine | Mood</title>
+  <!-- Font -->
+    <link href="https://fonts.googleapis.com/css?family=Abril+Fatface&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Raleway:200,400&display=swap" rel="stylesheet">
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load("current", {packages:["calendar"]});
+      google.charts.setOnLoadCallback(drawChart);
+
+  
+   function drawChart() {
+
+       var counts = {{ data|tojson }}; 
+       var dataTable = new google.visualization.DataTable();
+       dataTable.addColumn({ type: 'date', id: 'Date' });
+       dataTable.addColumn({ type: 'number', id: 'Mood' });
+        for (var i = 0; i < counts.length; i++) {
+         dataTable.addRow([new Date(counts[i][0], counts[i][1] - 1, counts[i][2]), counts[i][3]]);
+        }
+
+       var chart = new google.visualization.Calendar(document.getElementById('calendar_basic'));
+
+       
+       var options = {
+         noDataPattern: {
+           backgroundColor: '#08080a',
+           color: '#08080a'
+         },
+         colorAxis: {
+           values: [0, 1, 2, 3],
+           colors: ['#FBE049', '#2dd630', '#33c5f2', '#f2392c']
+         },
+         calendar: {
+           cellColor: {
+             stroke: 'white',     
+             strokeOpacity: 0.75, 
+             strokeWidth: 1      
+             },
+           cellSize: 20,
+           underYearSpace: 15,
+           underMonthSpace: 15,
+           yearLabel: {
+            fontName: 'Raleway',
+            fontSize: 70,
+            color: 'white',
+            bold: false,
+            italic: false
+            }
+          },
+       };
+
+       chart.draw(dataTable, options);
+   }
+    </script>
+  </head>
+  <body style="background-color: #08080af8">
+
+    <style>
+      #name:hover {
+        background-color: #08080a
+      }
+
+      #logout:hover {
+        
+        background-color: white;
+      }
+      </style>
+    <nav class="navbar navbar-expand-sm navbar-dark" style="background-color: #08080a; border-bottom: white 1px solid">
+      <a class="navbar-brand" style="font-family: 'Abril Fatface', serif; color: white; font-size: 200%">Saturnine</a>
+
+      <button style="color: white" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon" style="color: white;"></span>
+      </button>
+    
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item dropdown" style="background-color: #08080a">
+            <a style="color: white; font-family: 'Raleway', cursive;" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Spotify User
+            </a>
+            <div style="background-color: #08080a; font-family: 'Raleway', cursive; border-radius: 20px;" class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <div class="dropdown-divider" style="color: white; margin-top: 6px;"></div>
+              <a id="name" style="color: white; font-family: 'Raleway', cursive; border-radius: 20px;" class="dropdown-item">{{name}}</a>
+            </div>
+          </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0" method="GET" action="/">
+          <button id="logout" style="font-family: 'Raleway',cursive; font-weight: 400; padding: 5px; padding-right: 15px; padding-left: 15px; font-size: 100%; border: 1px white solid; border-radius: 40px; background-color: transparent; color: white;" type="submit" href="./">Log Out</button>
+        </form>
+      </div>
+    
+    </nav>
+      <br> <br> <br> 
+      <p style="font-family: 'Raleway', cursive; font-size: 200%; color: white; text-align: center; font-weight: 200; width: auto; margin: 0 auto;">what your music says about your mood</p>
+      <br> <br> <br>
+      <p style="color: white; margin-left: 11%; margin-bottom: -3%; font-family: 'Raleway', cursive; font-size: 80%;">0: Happy, 1: Chill, 2: Sad, 3: Angry</p>
+    <div id="calendar_basic" style="width: auto; height: 300px; margin-left: 4%"></div>
+   
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+  </body>
+</html>
